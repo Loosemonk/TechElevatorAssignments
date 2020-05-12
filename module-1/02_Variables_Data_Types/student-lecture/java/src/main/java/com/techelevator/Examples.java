@@ -3,7 +3,7 @@ package com.techelevator;
 public class Examples {
 
 	public static void main(String[] args) {
-		
+	
 		// Variable declaration
 		int x;
 		
