@@ -6,7 +6,7 @@ public class Lecture {
     it so that it returns something other than a 1.
     */
     public int returnNotOne() {
-        return 1;
+        return 2;
     }
 
     /*
@@ -14,14 +14,14 @@ public class Lecture {
     it so that it returns something other than a 0.5.
     */
     public double returnNotHalf() {
-        return 0.5;
+        return 3;
     }
 
     /*
     3. This method needs to return a String. Fix it to return a valid String.
     */
     public String returnName() {
-        return null;
+        return "any string";
     }
 
     /*
@@ -45,7 +45,7 @@ public class Lecture {
     */
     public boolean returnTrueFromIf() {
         if (true) {
-            return false;
+            return true;
         }
 
         return false;
@@ -57,7 +57,7 @@ public class Lecture {
     */
     public boolean returnTrueWhenOneEqualsOne() {
         if (1 == 1) {
-            return false;
+            return true;
         }
 
         return false;
@@ -67,14 +67,14 @@ public class Lecture {
     8. This method checks a parameter passed to the method to see if it's
     greater than 5 and returns true if it is.
     */
-    public boolean returnTrueWhenGreaterThanFive(int number) {
-        if (number > 5) {
+    public boolean returnTrueWhenGreaterThanFive(int number) 
+        if (number > 5) { 
+        	return true;
+        } 
 
-        } else {
-
-        }
-        return false;
-    }
+        
+        
+    
 
     /*
     9. If you think about it, we really don't need the if statement above.
@@ -140,20 +140,17 @@ public class Lecture {
     15. Now, do it again with a different boolean opeation.
     */
     public String returnAdultOrMinorAgain(int number) {
-        if (true) {
-            return "Adult";
-        } else {
-            return "Minor";
-        }
+       return (number<18) ? "Minor" : " Adult";
+        
     }
 
     /*
     16. Return as above, but also return "Teen" if the number is between 13 and 17 inclusive.
     */
     public String returnAdultOrMinorOrTeen(int number) {
-        if (true) {
+        if (number >= 18) {
             return "Adult";
-        } else if (true) {
+        } else if (number >= 13 && number <= 17) {
             return "Teen";
         } else {
             return "Minor";

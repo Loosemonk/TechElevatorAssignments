@@ -128,7 +128,14 @@ public class Exercises {
 	 sum13([1, 2, 2, 1, 13]) → 6
 	 */
 	public int sum13(int[] nums) {
-		return 0;
+		int sum = 0;
+		for (int i = 0; i < nums.length; i++ )
+		if (nums[i] != 13) {
+			sum = sum + nums [i];
+			}else {
+				i = i + 1;
+			}
+		return sum;
 	}
 
 	/*
