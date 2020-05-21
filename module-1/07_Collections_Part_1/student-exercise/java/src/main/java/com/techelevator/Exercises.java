@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -8,6 +9,8 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 public class Exercises {
 
@@ -22,7 +25,8 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
+		return Arrays.asList(stringArray);
+		
 	}
 
 	/*
@@ -32,7 +36,7 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+		return (String[]) stringList.toArray(new String[stringList.size()]);
 	}
 
 	/*
@@ -42,9 +46,18 @@ public class Exercises {
 	 no4LetterWords( {"Red", "White", "Blue"} )  ->  ["Red", "White"]
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
+	//List<String> studentNames = new ArrayList<String>();
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
-	}
+		List<String> no4LetterList = new ArrayList<String>();
+	    for (String sL : stringArray) {
+	    	if(sL.length() != 4 ) {
+	    		no4LetterList.add(sL);
+	    	}
+	    }
+		      
+		      return no4LetterList;}
+	
+	
 
 	/*
 	 Given a List of Strings, return a new list in reverse order of the original. One obvious solution is to
@@ -55,7 +68,17 @@ public class Exercises {
 		-> ["way", "the", "all", "jingle", "bells", "jingle", "bells", "jingle"]
 	 */
 	public List<String> reverseList(List<String> stringList) {
-		return null;
+		Stack<String> strStack = new Stack<String>();
+		List<String> reverseList = new ArrayList<String>();
+		
+		for(String x : stringList) {
+			strStack.push(x);
+		}
+		while (!strStack.isEmpty()) {
+			reverseList.add(strStack.pop());
+		}
+		
+		return reverseList ;
 	}
 
 	/*
@@ -65,7 +88,14 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+		List<Double> dubList = new ArrayList<Double>();
+		
+				for (int x : intArray) {
+					double divideBy2 = (double) x/2;
+					dubList.add(divideBy2);
+				}
+		
+		return dubList;
 	}
 
 	/*
@@ -74,10 +104,14 @@ public class Exercises {
 	 findLargest( [987, 1234, 9381, 731, 43718, 8932] ) -> 43718
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 64362
 	 */
-	public Integer findLargest(List<Integer> integerList) {
-		return null;
-	}
-
+	  public Integer findLargest(List<Integer> integerList) {
+		return Collections.max(integerList);
+	
+			
+		}
+		
+		
+	
 	/*
 	 Given an array of Integers, return a List of Integers containing just the odd values.
 	 oddOnly( {112, 201, 774, 92, 9, 83, 41872} ) -> [201, 9, 83]
@@ -85,7 +119,15 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+		List<Integer> oddOnly = new ArrayList<Integer>();
+		for(Integer oddInt: integerArray) {
+			if (oddInt % 0 != 2) {
+			oddOnly.add(oddInt);
+			}
+		}
+		
+		
+		return oddOnly ;
 	}
 
 	/*
@@ -96,6 +138,16 @@ public class Exercises {
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
+		int i = 0;
+		for(Integer value : integerList) {
+			if(value.equals(intToFind)) 
+				i++;
+			
+		}
+		
+		if (i > 1)
+			return true;
+		
 		return false;
 	}
 
@@ -113,7 +165,20 @@ public class Exercises {
 	 equals "1")
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		List<String> results = new ArrayList<String>();	
+		
+		for( Integer fzb: integerArray) {
+		if ((fzb % 3 == 0) && (fzb % 5==0)) {
+				results.add("FizzBuzz");
+		}else if (fzb % 3==0) {
+					results.add("Fizz");
+		}else if (fzb % 5==0 ) {
+						results.add("Buzz");
+							
+		}else {results.add(fzb.toString());
+		}			
+		}
+		return results ;
 	}
 
 	/*
@@ -124,7 +189,20 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+			List<Integer> mixedList = new ArrayList<>();
+		int i;
+			for( i = 0; i < listOne.size() && i < listTwo.size(); i++) {
+				mixedList.add(listOne.get(i));
+				mixedList.add(listTwo.get(i));
+			}	
+			
+			if (i<listOne.size()) {
+					mixedList.addAll(listOne.subList(i, listOne.size()));
+				}
+			else if (i<listTwo.size()) {
+				mixedList.addAll(listTwo.subList(i, listTwo.size()));
+			}
+			return mixedList;
 	}
 
 	/*
@@ -136,8 +214,39 @@ public class Exercises {
 	 boardingGate( [29, 19, 9, 21, 11, 1, 0, 25, 15, 5, 31] ) -> [9, 1, 5, 19, 11, 15, 29, 21, 25]
 	 boardingGate( [0, -1, 44, 31, 17, 7, 27, 16, 26, 6] ) -> [7, 6, 17, 16, 27, 26]
 	 */
-	public List<Integer> boardingGate(List<Integer> seatNumberList) {
-		return null;
-	}
-
+	/*public List<Integer> boardingGate(List<Integer> seatNumberList) {
+		List<Integer> boardingGroups = new ArrayList<Integer>();
+		Queue<Integer> queue1to10 = new LinkedList<Integer>();
+		Queue<Integer> queue11to20 = new LinkedList<Integer>();
+		Queue<Integer> queue21to30 = new LinkedList<Integer>();
+		
+		for(Integer seatNum : seatNumberList) {
+			if(seatNum >=1 && seatNum <30) {
+				if(seatNum < 10) {
+					queue1to10.add(seatNum);	
+				}else if(seatNum <= 20) {
+					queue11to20.add(seatNum);
+				}else if	(seatNum <= 30) {
+							queue21to30.add(seatNum);
+					}
+						}
+				while(queue1to10.peek() != null) {
+					boardingGroups.add(queue1to10.poll());
+				}
+				while(queue11to20.peek() != null) {
+					boardingGroups.add(queue11to20.poll());
+				}
+				while(queue11to20.peek() != null) {
+					boardingGroups.add(queue21to30.poll());
+				}
+		return boardingGroups ;
+		}
+	}*/
 }
+					
+		
+			
+	
+
+
+
