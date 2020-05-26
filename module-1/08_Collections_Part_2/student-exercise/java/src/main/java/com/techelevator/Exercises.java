@@ -1,8 +1,11 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.swing.plaf.multi.MultiButtonUI;
 
@@ -273,8 +276,8 @@ public class Exercises {
 				int multipleCount = strCount.get(strWords);
 				multipleCount++;
 				if (multipleCount > 1) {
-					trueNum.put(multipleCount, true);
-				}else{ trueNum.put(multipleCount, false);
+					trueNum.put(strWords, true);
+				}else{ trueNum.put(strWords, false);
 			}
 		}else {
 			
@@ -341,7 +344,22 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> last2Revisited(String[] words) {
-		return null;
+		Map<String, Integer> revisitAgain = new HashMap<>();
+ 		   for(String strings : words) {
+ 			   //figure out last2 for each word, key is word, value is the 
+ 			   
+ 			 
+ 			   
+ 			   
+ 			   if (words.length <= 2) {
+ 				   revisitAgain.put(strings, 0);
+ 				   revisitAgain.put(strings + 1, 0);
+ 				   
+ 				   
+ 			   }
+ 		   }
+ 		   		
+		return revisitAgain;
 	}
 
 	/*
@@ -351,7 +369,13 @@ public class Exercises {
 	 distinctValues( ["jingle", "bells", "jingle", "bells", "jingle", "all", "the", "way"] ) -> ["jingle", "bells", "all", "the", "way"]
 	 */
 	public List<String> distinctValues(List<String> stringList) {
-		return null;
+		Set<String> set = new LinkedHashSet<>(stringList);
+		
+		
+		List<String> newList = new ArrayList<>(set);
+		
+		
+		return newList;
 	}
 
 }
