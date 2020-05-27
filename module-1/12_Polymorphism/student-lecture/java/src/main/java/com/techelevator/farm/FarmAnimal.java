@@ -1,6 +1,6 @@
 package com.techelevator.farm;
 
-public class FarmAnimal {
+public class FarmAnimal implements ISingable {
 	private String name;
 	private String sound;
 
