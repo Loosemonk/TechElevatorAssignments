@@ -10,7 +10,7 @@ public class OldMacdonald {
 	public static void main(String[] args) {
 		
 		//FarmAnimal[] farmAnimals = new FarmAnimal[] { new Cow(), new Chicken(), new Dog(), new Dog("bark!",true), new Shark(),new Tractor() };
-		ISingable[] farmItems = new ISingable[] {new Cow(), new Chicken(), new Dog(), new Dog("bark!",true), new Shark(), new Tractor()}; 
+		Singable[] farmItems = new Singable[] {new Cow(), new Chicken(), new Dog(), new Dog("bark!",true), new Shark(), new Tractor()}; 
 		
 		//some of the farm animals are sellable but not all of them
 		//sell my chicken and cow, but i don't want to sell my dog. i don't want to sell my tractor
@@ -27,7 +27,7 @@ public class OldMacdonald {
 		ISellable chicken = new Chicken();
 		((Chicken) chicken).layEgg();
 		((FarmAnimal) chicken).getName();
-		((ISingable) chicken).getName();
+		((Singable) chicken).getName();
 		
 		ISellable cow = new Cow();
 		//((Chicken) cow).layEgg(); Run time error
@@ -46,7 +46,7 @@ public class OldMacdonald {
 		*/
 					
 		
-		for(ISingable item : farmItems) {
+		for(Singable item : farmItems) {
 			String name = item.getName();
 			String sound = item.getSound();
 			

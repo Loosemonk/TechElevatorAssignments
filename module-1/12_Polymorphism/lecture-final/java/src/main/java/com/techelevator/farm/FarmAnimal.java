@@ -1,8 +1,9 @@
 package com.techelevator.farm;
 
-public class FarmAnimal implements ISingable {
+public class FarmAnimal implements Singable {
 	private String name;
 	private String sound;
+	private boolean isAsleep;
 
 	public FarmAnimal(String name, String sound) {
 		this.name = name;
@@ -12,8 +13,23 @@ public class FarmAnimal implements ISingable {
 	public String getName( ) {
 		return name;
 	}
-	public String getSound( ) {
+	public final String getSound( ) {
+		if (isAsleep) {
+			return "Zzzzz";
+		}
 		return sound;
 	}
-	
+
+	public boolean isAsleep() {
+		return isAsleep;
+	}
+	public void goToSleep() {
+		isAsleep = true;
+	}
+	public void wakeUp() {
+		isAsleep = false;
+	}
+
+
+
 }

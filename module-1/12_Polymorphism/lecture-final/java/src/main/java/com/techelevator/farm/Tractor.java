@@ -1,6 +1,6 @@
 package com.techelevator.farm;
 
-public class Tractor implements ISingable {
+public class Tractor implements Singable {
 	public Tractor() {
 		
 	}
