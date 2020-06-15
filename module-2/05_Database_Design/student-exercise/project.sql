@@ -41,7 +41,7 @@ CREATE TABLE project_employee(
 project_id int not null,
 employee_number int not null,
 
-constraint fk_project_employee_project_id_employee_id primary key (project_id,employee_number)
+constraint fk_project_employee_project foreign key (project_id) references project (project_id)
 
 );
 
