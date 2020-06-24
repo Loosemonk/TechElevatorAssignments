@@ -129,6 +129,17 @@
       "checkinDate": "08/08/2020",
       "checkoutDate": "08/10/2020",
       "guests": 4
+    },
+    {
+      "id": 96,
+      "hotelID": 1,
+      "fullName": "Benjan",
+      "checkinDate": "4/30/2020",
+      "checkoutDate": "5/30/2020",
+      "guests": 68
+    },
+    {
+      "id": 551
     }
   ]
 }

@@ -1,5 +1,6 @@
 package com.techelevator.services;
 
+
 import com.techelevator.models.Auction;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -68,18 +69,69 @@ public class AuctionService {
     }
 
     public Auction add(String auctionString) {
-        // place code here
-        return null;
+    	  //create an object of type reservation to send
+  	  Auction newAuc = makeAuction(auctionString);
+  	  if (newAuc == null) {
+  		  return null;
+  	  }
+  	  //HTTP header and entity
+  	  HttpHeaders headers = new HttpHeaders();
+  	  headers.setContentType(MediaType.APPLICATION_JSON);
+  	  // an http entity represent an Http request or response entity, consisting of headers and a body
+  	  HttpEntity<Auction> entity= new HttpEntity<>(newAuc,headers);
+  	  
+  	  //us the post method with the api
+  	  try {
+  	  newAuc = restTemplate.postForObject(BASE_URL, entity, Auction.class);
+  	  }
+  	  catch (RestClientResponseException e) {//catch 401(unauthorized), 404 (not found), 500 (General server exception)
+  		System.out.println(e.getRawStatusCode() + " " + e.getStatusText() );
+  	}
+  	  catch (ResourceAccessException e) {
+  		System.out.println(e.getMessage());
+  		}
+  	 return newAuc;
     }
+  
 
     public Auction update(String auctionString) {
-        // place code here
-        return null;
-    }
+  	  //create an object of type reservation to send
+	  Auction newAuc = makeAuction(auctionString);
+	  if (newAuc == null) {
+		  return null;
+	  }
+	  //HTTP header and entity
+	  HttpHeaders headers = new HttpHeaders();
+	  headers.setContentType(MediaType.APPLICATION_JSON);
+	  // an http entity represent an Http request or response entity, consisting of headers and a body
+	  HttpEntity<Auction> entity= new HttpEntity<>(newAuc,headers);
+	  
+	  //us the post method with the api
+	  try {
+	 restTemplate.put(BASE_URL + "/" + newAuc.getId(), entity);
+	  }
+	  catch (RestClientResponseException e) {//catch 401(unauthorized), 404 (not found), 500 (General server exception)
+		System.out.println(e.getRawStatusCode() + " " + e.getStatusText() );
+	}
+	  catch (ResourceAccessException e) {
+		System.out.println(e.getMessage());
+		}
+	 return newAuc;
+  }
+
 
     public void delete(int id) {
-        // place code here
-    }
+  	  try {
+  		  restTemplate.delete(BASE_URL + "/" + id);
+  		  }
+  		  catch (RestClientResponseException e) {//catch 401(unauthorized), 404 (not found), 500 (General server exception)
+  			System.out.println(e.getRawStatusCode() + " " + e.getStatusText() );
+  		}
+  		  catch (ResourceAccessException e) {
+  			System.out.println(e.getMessage());
+  			}
+  		
+  	  }
 
     private HttpEntity<Auction> makeEntity(Auction auction) {
         HttpHeaders headers = new HttpHeaders();

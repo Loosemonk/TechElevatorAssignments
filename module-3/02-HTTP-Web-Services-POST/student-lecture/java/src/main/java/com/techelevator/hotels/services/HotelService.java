@@ -28,8 +28,28 @@ public class HotelService {
    * @return Reservation
    */
   public Reservation addReservation(String newReservation) {
-    // TODO: Implement method
-    return null;
+  //create an object of type reservation to send
+	  Reservation newRes = makeReservation(newReservation);
+	  if (newRes == null) {
+		  return null;
+	  }
+	  //HTTP header and entity
+	  HttpHeaders headers = new HttpHeaders();
+	  headers.setContentType(MediaType.APPLICATION_JSON);
+	  // an http entity represtent an Http request or response entitiy, consisting of headers and a body
+	  HttpEntity<Reservation> entity= new HttpEntity<>(newRes,headers);
+	  
+	  //us the post method with the api
+	  try {
+	  newRes = restTemplate.postForObject(BASE_URL + "hotels/"+ newRes.getHotelID()+"/reservations", entity, Reservation.class);
+	  }
+	  catch (RestClientResponseException e) {//catch 401(unauthorized), 404 (not found), 500 (General server exception)
+		System.out.println(e.getRawStatusCode() + " " + e.getStatusText() );
+	}
+	  catch (ResourceAccessException e) {
+		System.out.println(e.getMessage());
+		}
+	 return newRes;
   }
 
   /**
@@ -40,8 +60,28 @@ public class HotelService {
    * @return
    */
   public Reservation updateReservation(String CSV) {
-    // TODO: Implement method
-    return null;
+  //create an object of type reservation to send
+	  Reservation newRes = makeReservation(CSV);
+	  if (newRes == null) {
+		  return null;
+	  }
+	  //HTTP header and entity
+	  HttpHeaders headers = new HttpHeaders();
+	  headers.setContentType(MediaType.APPLICATION_JSON);
+	  // an http entity represtent an Http request or response entitiy, consisting of headers and a body
+	  HttpEntity<Reservation> entity= new HttpEntity<>(newRes,headers);
+	  
+	  //us the put method with the api
+	  try {
+	  restTemplate.put(BASE_URL + "reservations/"+ newRes.getId(), entity );
+	  }
+	  catch (RestClientResponseException e) {//catch 401(unauthorized), 404 (not found), 500 (General server exception)
+		System.out.println(e.getRawStatusCode() + " " + e.getStatusText() );
+	}
+	  catch (ResourceAccessException e) {
+		System.out.println(e.getMessage());
+		}
+	 return newRes;
   }
 
   /**
@@ -50,8 +90,18 @@ public class HotelService {
    * @param id
    */
   public void deleteReservation(int id) {
-    // TODO: Implement method
-  }
+	  try {
+	  restTemplate.delete(BASE_URL + "reservations/"+ id);
+	  }
+	  catch (RestClientResponseException e) {//catch 401(unauthorized), 404 (not found), 500 (General server exception)
+		System.out.println(e.getRawStatusCode() + " " + e.getStatusText() );
+	}
+	  catch (ResourceAccessException e) {
+		System.out.println(e.getMessage());
+		}
+	
+  }// TODO: Implement method
+  
 
   /* DON'T MODIFY ANY METHODS BELOW */
 

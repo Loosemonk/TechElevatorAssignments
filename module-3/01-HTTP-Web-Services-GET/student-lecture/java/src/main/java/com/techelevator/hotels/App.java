@@ -6,6 +6,27 @@ import org.springframework.web.client.RestTemplate;
 
 public class App {
 
+	private static RestTemplate restTemplate = new RestTemplate();
+	private static final String API_BASE_URL = "http://localhost:3000/";
+	
+	public static Hotel[] requestHotels() {
+		return restTemplate.getForObject(API_BASE_URL +"hotels",Hotel[].class);
+	}
+	public static Review[] requestReviews() {
+		return restTemplate.getForObject(API_BASE_URL +"reviews",Review[].class);
+	}
+	public static Hotel requestHotelDetails(int hotelId) {
+		return restTemplate.getForObject(API_BASE_URL +"hotels/" + hotelId, Hotel.class);
+	}
+	public static Review[] requestReviewDetailsById(int hotelId) {
+		return restTemplate.getForObject(API_BASE_URL +"hotels/" + hotelId + "/reviews", Review[].class);
+	}
+	public static Hotel[] requestHotelsByStarRating(int stars) {
+		return restTemplate.getForObject(API_BASE_URL +"hotels?star" + stars,Hotel[].class);
+	}
+	
+	
+	
     public static void main(String[] args) {
         run();
     }
@@ -25,17 +46,19 @@ public class App {
             }
             System.out.println("");
             if (menuSelection == 1) {
-                System.out.println("Not implemented");
+                Hotel[] requestedList = requestHotels();
+                printHotels(requestedList);
             } else if (menuSelection == 2) {
-                System.out.println("Not implemented");
+            	Review[] requestedReviews = requestReviews();
+            	printReviews(requestedReviews);
             } else if (menuSelection == 3) {
-                System.out.println("Not implemented");
+               printHotel(requestHotelDetails(1));
             } else if (menuSelection == 4) {
-                System.out.println("Not implemented");
+               printReviews(requestReviewDetailsById(1));
             } else if (menuSelection == 5) {
-                System.out.println("Not implemented");
+            	 printHotels(requestHotelsByStarRating(3));
             } else if (menuSelection == 6) {
-                System.out.println("Not implemented - Create a custom Web API query here");
+                System.out.println("Print the details of New York City");
             } else if (menuSelection == 0) {
                 continue;
             } else {

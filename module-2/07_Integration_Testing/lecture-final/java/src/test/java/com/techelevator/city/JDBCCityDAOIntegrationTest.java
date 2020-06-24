@@ -39,7 +39,9 @@ public class JDBCCityDAOIntegrationTest {
 		dataSource = new SingleConnectionDataSource();
 		dataSource.setUrl("jdbc:postgresql://localhost:5432/world");
 		dataSource.setUsername("postgres");
-		dataSource.setPassword("postgres1");//for the sake of time during class. should use env
+		dataSource.setPassword("postgres1");
+		
+		//for the sake of time during class. should use env
 		
 		/* this line disables autocommit for any connections from datasource. This allows us to 
 		 * rollback any changes after each test
