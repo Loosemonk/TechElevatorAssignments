@@ -135,12 +135,7 @@ public class AuctionControllerTests {
                 .header("Authorization", "Bearer " + adminToken))
                 .andExpect(status().isNoContent());
 
-        final String creatorToken = getTokenForLogin("creator", "password", mvc);
-
-        mvc.perform(delete("/auctions/2")
-                .contentType(MediaType.APPLICATION_JSON)
-                .header("Authorization", "Bearer " + creatorToken))
-                .andExpect(status().isNoContent());
+ 
     }
 
     @Test
