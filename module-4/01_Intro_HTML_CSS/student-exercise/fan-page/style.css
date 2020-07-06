@@ -16,6 +16,7 @@ body{
     color: rgb(179, 179, 216);
     background-color: darkgreen;
     line-height: 10mm;
+    background-image: url(https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png);
 
 }
 h1 {
@@ -27,7 +28,7 @@ h1 {
 }
 h3 {
     font-size: 20px;
-    color: rgb(0, 3, 2);
+    color: rgb(226, 140, 215);
     align-content: center;
     text-align: center;
 }
