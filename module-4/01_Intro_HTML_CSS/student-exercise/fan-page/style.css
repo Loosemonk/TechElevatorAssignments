@@ -1,0 +1,33 @@
+img{
+    height:1000px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 35%;
+    border-style: groove;
+    text-align: center;
+}
+div {
+    text-align: center;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: rgb(179, 179, 216);
+    background-color: darkgreen;
+    line-height: 10mm;
+
+}
+h1 {
+    font-size: 70px;
+    color: rgb(226, 140, 215);
+    align-content: center;
+    text-align: center;
+    
+}
+h3 {
+    font-size: 20px;
+    color: rgb(0, 3, 2);
+    align-content: center;
+    text-align: center;
+}

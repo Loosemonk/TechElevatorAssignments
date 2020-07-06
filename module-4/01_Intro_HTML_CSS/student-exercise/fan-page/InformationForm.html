@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Card</title>
+    <link rel="stylesheet" href="formStyle.css"/>
+</head>
+<body>
+  <header>
+      <h1>Info Card</h1>
+  </header> 
+  <main>
+      <form method="POST" action="api/information">
+        <div>
+            <label for="infoName">Name:</label>
+            <input id="infoName" name="infoName" type="text" />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" name="email" type="text"/>
+        </div>
+        <div>
+            <label for="dateOfBirth">Date of birth:</label>
+            <input id="dateOfBirth" name="dateOfBirth" type="date"/>
+        </div>
+        <div>
+            <label for="favoriteColor">Favorite Color:</label>
+            <input id="favoriteColor" name="favoriteColor" type="color"/>
+        </div>
+        <div>
+            <label for="favoriteNumber">Favorite Number:</label>
+            <input id="favoriteNumber" name="favoriteNumber" type="number"/>
+        </div>
+        <div>
+            <label for="confirmationDataIsCorrect">Is information correct:</label>
+            <input id="confirmationDataIsCorrect" name="confirmationDataIsCorrect" type="checkbox"/>
+        </div>
+        <div>
+            <input type="submit"/>
+        </div>
+    </form>
+  </main> 
+</body>
+</html>

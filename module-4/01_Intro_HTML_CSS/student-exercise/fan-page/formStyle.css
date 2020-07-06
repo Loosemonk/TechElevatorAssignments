@@ -1,0 +1,10 @@
+body{
+line-height: 1cm;
+border-radius: 2cm;
+}
+form{
+    background-color: aquamarine;
+    box-sizing: content-box;
+    border: 50cm;
+    box-shadow: 30px;
+}
