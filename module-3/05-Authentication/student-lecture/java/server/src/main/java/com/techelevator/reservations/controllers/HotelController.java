@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@PreAuthorize("isAuthenticated()")
 public class HotelController {
 
     private HotelDAO hotelDAO;
@@ -33,6 +34,7 @@ public class HotelController {
      *
      * @return a list of all hotels in the system
      */
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "/hotels", method = RequestMethod.GET)
     public List<Hotel> list() {
         return hotelDAO.list();
@@ -44,6 +46,7 @@ public class HotelController {
      * @param id the id of the hotel
      * @return all info for a given hotel
      */
+    
     @RequestMapping(path = "/hotels/{id}", method = RequestMethod.GET)
     public Hotel get(@PathVariable int id) {
         return hotelDAO.get(id);
@@ -114,6 +117,7 @@ public class HotelController {
      * @param id
      * @throws ReservationNotFoundException
      */
+    @PreAuthorize("hasRole('Admin')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/reservations/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable int id) throws ReservationNotFoundException {
