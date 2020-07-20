@@ -40,6 +40,7 @@
       v-for="r in reviews"
       v-bind:key="r.id"
       v-bind:class="{favorited: r.favorited, 'gianttext': r.reviewer=='Katie Dwyer'}"
+      
     >
       <h4>{{r.reviewer}}</h4>
       <div class="rating">
