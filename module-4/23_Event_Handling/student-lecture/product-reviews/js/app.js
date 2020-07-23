@@ -60,6 +60,7 @@ function displayReview(review) {
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
+addEventListener('DOMContentLoaded', () =>{
 // set the product reviews page title
 setPageTitle();
 // set the product reviews page description
@@ -67,6 +68,33 @@ setPageDescription();
 // display all of the product reviews on our page
 displayReviews();
 
+const desc = document.querySelector('.description')
+desc.addEventListener('click', (event) => {
+  toggleDescriptionEdit(event.target)
+})
+const inputDesc = document.getElementById('inputDesc')
+inputDesc.addEventListener("keyup", (event) =>{
+  if(event.key === 'Enter'){
+    exitDescriptionEdit(event.target, true)
+  }
+  else if(event.key=== 'Escape') {
+    exitDescriptionEdit(event.target, false)
+  }
+})
+
+inputDesc.addEventListener('mouseleave', (event) =>{
+  exitDescriptionEdit(event.target, false)
+})
+const btnToggleForm = document.getElementById('btnToggleForm')
+btnToggleForm.addEventListener('click', showHideForm)
+
+})
+
+const btnSaveReview = document.getElementById('btnSaveReview')
+btnSaveReview.addEventListener('click', (event)=>{
+  event.preventDefault(); 
+  saveReview
+})
 /**
  * Take an event on the description and swap out the description for a text box.
  *
@@ -130,4 +158,19 @@ function resetFormValues() {
 /**
  * I will save the review that was added using the add review from
  */
-function saveReview() {}
+function saveReview() {
+  const name = document.getElementById('name')
+  const title = document.getElementById('title')
+  const rating= document.getElementById('rating')
+  const review = document.getElementById('review')
+
+  const newReview={
+    reviewer: name.value,
+    title: title.value,
+    rating: rating.value,
+    review: review.value
+  }
+  reviews.push(newReview);
+  displayReviews(newReview)
+  showHideForm()
+}

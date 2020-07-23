@@ -26,6 +26,10 @@ function printToConsole(value) {
  * @param {number} secondParameter the second parameter to multiply
  */
 
+function multiplyTogether(firstParameter, secondParameter){
+  return firstParameter * secondParameter;
+}
+
 /**
  * This version makes sure that no parameters are ever missing. If
  * someone calls this function without parameters, we default the
@@ -37,8 +41,10 @@ function printToConsole(value) {
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
 
+function multiplyNoUndefined(firstParameter = 0, secondParameter = 0){
+  return firstParameter * secondParameter;
+}
 
- 
 /**
  * Functions can return earlier before the end of the function. This could be useful
  * in circumstances where you may not need to perform additional instructions or have to
@@ -81,12 +87,47 @@ function scopeTest() {
     console.log("This won't print!");
   }
 }
-
+/**
+ * 
+ * @param {string} name 
+ * @param {number} age 
+ * @param {string[]} listOfQuirks 
+ * @param {string} separator 
+ * @returns{string} the full sentence about the person
+ */
 function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
   let description = `${name} is currently ${age} years old. Their quirks are: `;
   return description + listOfQuirks.join(separator);
 }
+function combineStrings(...allStrings){
+let result = '';
+  for(let s of allStrings){
+    result += s
+  }
+return result;
+}
+function returnParam(param){
+  return param;
+}
 
+function imperativeForEach(){
+  let myArray = [1,2,3,4,5]
+  for(let n of myArray){
+    logMultiplyByTwo(n);
+  }
+}
+function logMultiplyByTwo(x){
+  console.log( x*2);
+}
+
+function declarativeForEach(){
+  let myArray = [1,2,3,4,5];
+  myArray.forEach(logMultiplyByTwo);
+}
+/**
+ * 
+ * @param {} numbersToFilter 
+ */
 
 /**
  * Takes an array and returns a new array of only numbers that are
@@ -97,8 +138,28 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  *   multiples of 3
  */
 function allDivisibleByThree(numbersToFilter) {
-
+return numbersToFilter.filter(isDivisibleByThree)
 }
+
+function isDivisibleByThree(num){
+ return num % 3 === 0;
+}
+
+function mapDemo(){
+  let myArray = ['red', 'blue', 'green'];
+  return myArray.map(str => str.substring(1))
+}
+
+function mapWithObjects(){
+  let objArray = [
+    {name: ' Steve', bankBalance: 100},
+    {name: 'Marty', bankBalance: 500},
+    {name: 'TE student', bankBalance: 10}
+  ];
+  objArray.map(person => person.bankBalance += 100);
+  return objArray.map(person => person.name + person.bankBalance)
+}
+
 
 
 /**
@@ -108,6 +169,13 @@ function allDivisibleByThree(numbersToFilter) {
  * @param {number[]} numbersToSum numbers to add up
  * @returns {number} sum of all the numbers
  */
+
 function sumAllNumbers(numbersToSum) {
-  
+  return numbersToSum.reduce((acc, num) => acc + num);
+}
+function smallestNum(num){
+  return num.reduce((smallestSoFar, n) => (n < smallestSoFar)? n : smallestSoFar);
+}
+function shortestString(strings){
+  return strings.reduce((shortest, str) => (str.length < shortest.length)? str : shortest);
 }

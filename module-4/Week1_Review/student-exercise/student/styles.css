@@ -3,12 +3,23 @@ body {
     background-color: #87CEEB;
 }
 
+header{
+   display: flex;
+   
+    
+}
+
 nav ul {
     margin: 0;
     padding: 20px 0 0 0;
 }
 
 nav ul li {
+    display: flex;
+    display: inline;
+    flex-grow: 1;
+    flex-direction: row-reverse;
+    justify-content: space-between;
     list-style: none;
     width: 30%;
     background-color: #00afef;
@@ -22,6 +33,7 @@ header img {
     width: auto;
 }
 header h1 {
+    justify-self: left;
     padding-left: 20px;
     padding-top: 10px;
 }
@@ -32,17 +44,33 @@ main img {
     height: 350px;
     width: 35%;
 }
+#mainpage{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+}
+main li{
+    list-style-type: none;
+    margin: 1em;
+}
+    
 
 main li:before {
+   
     content: '🍡';
     margin-left: -31px;
     padding-right: 8px;
+    
 }
 
 main, section, footer {
     background-color: #ffffff;
     border-radius: 5px;
     padding: 20px;
+    text-align: left;
 }
 
 .store-button { /* used for store link in "Get refreshed" section */
@@ -54,4 +82,12 @@ main, section, footer {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
+}
+#lowerhalf{
+    display: flex;
+}
+
+#leftlower{
+    display: flex;
+    flex-direction: ;
 }

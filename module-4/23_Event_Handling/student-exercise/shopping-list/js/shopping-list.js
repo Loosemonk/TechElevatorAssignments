@@ -37,5 +37,65 @@ function displayGroceries() {
   });
 }
 
-setPageTitle();
-displayGroceries();
+
+
+
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  setPageTitle();
+  displayGroceries();
+
+  const itemComplete = document.getElementById('toggleAll');
+  const storeItems = document.querySelectorAll('li');
+
+  itemComplete.addEventListener('click', () =>{
+    if (allItemsIncomplete){
+      storeItems.forEach((grocery) =>{
+        grocery.classList.add('completed');
+        grocery.querySelector('i').classList.add('completed');
+      });
+      itemComplete.innerText = 'Mark All Incomplete'
+    }else{
+      storeItems.forEach((grocery) =>{
+        grocery.classList.remove('completed');
+        grocery.querySelector('i').classList.remove('completed')
+      });
+      itemComplete.innerText = 'Mark All Complete'
+    }
+    allItemsIncomplete = !allItemsIncomplete
+  });
+storeItems.forEach((grocery) =>{
+  grocery.addEventListener('click', () =>{
+    if(!grocery.classList.contains('completed')){
+      grocery.classList.add('completed');
+      grocery.querySelector('i').classList.add('completed');
+    }
+  });
+
+  grocery.addEventListener('dblclick', () => {
+    if (grocery.classList.contains('completed')){
+      grocery.classList.remove('completed');
+      grocery.querySelector('i').classList.remove('completed');
+    }
+  })
+})
+
+
+
+  /*
+  itemComplete.forEach((item) => {})
+  item.addEventListener('click', (event) => {
+     event.target.setAttribute('class', 'completed')
+
+   
+  })
+  */
+  
+
+  
+    
+ 
+
+
+})
+

@@ -28,7 +28,7 @@ export default {
   props: ["review"],
   methods: {
     onFavoritedChange() {
-
+      this.$store.commit("FLIP_FAVORITED", review)
     }
   }
 };
