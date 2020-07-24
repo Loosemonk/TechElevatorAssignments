@@ -187,7 +187,7 @@ export default {
       this.users[index].status ==="Active" ? "Disabled" : "Active";
       },
       selectUser(event){
-        if(event.target.id){
+        if(event.target.checked){
           this.selectedUserIDs.push(parseInt(event.target.id));
         }else{
           this.selectedUserIDs = this.selectedUserIDs.filter((user) =>{

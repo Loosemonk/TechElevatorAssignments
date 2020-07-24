@@ -9,8 +9,12 @@
 </template>
 
 <script>
+
 export default {
-    name: 'book-card'
+    name: 'book-card',
+    props:{
+        []
+    }
 }
 </script>
 
