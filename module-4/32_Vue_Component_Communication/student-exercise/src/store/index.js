@@ -4,8 +4,7 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {    
-     books: [
+  state: {books: [
     {
       title: "Kafka on the Shore",
       author: "Haruki Murakami",
@@ -30,9 +29,15 @@ export default new Vuex.Store({
       read: false,
       isbn: "9783125971400"
     }
-  ],},
-
-  mutations: {},
+  ]},
+  mutations: {
+    FLIP_STATUS(state,book) {
+      book.read = !book.read;
+    },
+    ADD_BOOK(state, book) {
+      state.books.push(book);
+    }
+  },
   actions: {},
   modules: {},
   strict: true
