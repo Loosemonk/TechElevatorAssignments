@@ -4,6 +4,7 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+<<<<<<< HEAD
   state: {books: [
     {
       title: "Kafka on the Shore",
@@ -38,6 +39,10 @@ export default new Vuex.Store({
       state.books.push(book);
     }
   },
+=======
+  state: {},
+  mutations: {},
+>>>>>>> af7698ec32e2c0ae07886c97875cdfd20da0e253
   actions: {},
   modules: {},
   strict: true
