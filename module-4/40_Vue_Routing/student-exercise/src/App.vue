@@ -1,6 +1,6 @@
 <template>
   <div id="app">
- <a href="/">Home</a>&nbsp;
+ <a href="/">Home |</a>&nbsp;
  <a href="/myBooks">My Books</a>
     <router-view />
   </div>
